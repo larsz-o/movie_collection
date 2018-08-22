@@ -1,0 +1,24 @@
+{
+  "name": "movie_collection",
+  "version": "1.0.0",
+  "description": "Description:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larsz-o/movie_collection.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/larsz-o/movie_collection/issues"
+  },
+  "homepage": "https://github.com/larsz-o/movie_collection#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "pg": "^7.4.3"
+  }
+}
