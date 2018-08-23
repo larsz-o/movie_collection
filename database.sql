@@ -11,6 +11,8 @@ CREATE TABLE "genres" (
 	"id" serial primary key,
 	"genre" varchar(50) not null,
 );
+INSERT INTO "movies" ("title", "release_date", "run_time", "image_url", "genre_id") 
+VALUES ($1, $2, $3, $4, $5); 
 
 INSERT INTO "genres" ("genre") 
 VALUES ('action'), ('horror'), ('musical'), ('comedy'), ('fantasy'), ('science fiction'), ('drama'), ('children/family'), ('documentary'), ('romantic comedy'), ('western'); 
