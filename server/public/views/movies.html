@@ -4,21 +4,7 @@
    <input type="text" ng-model="mc.movieTitle" placeholder="Title">
    <!-- option values correspond with ids in genre table in the database -->
    <label>Genre:</label>
-   <select ng-options="genre as genre.genre for genre in genreCollection track by genre.id" ng-model="mc.movieGenre"></select>
-<!-- 
-    <option value="">---Select Genre---</option>
-    <option value="1">Action</option>
-    <option value="8">Children/Family</option>
-    <option value="4">Comedy</option>
-    <option value="9">Documentary</option>
-    <option value="7">Drama</option>
-    <option value="5">Fantasy</option>
-    <option value="2">Horror</option>
-    <option value="3">Musical</option>
-    <option value="10">Romantic Comedy</option>
-    <option value="6">Science Fiction</option>
-    <option value="11">Western</option>
-   </select> -->
+   <select ng-options="genre.genre for genre in mc.genreTableList" ng-model="mc.movieGenre"></select>
    <label>Release Date:</label>
    <input type="text" ng-model="mc.movieMonth" placeholder="Month">
    <input type="number" ng-model="mc.movieDay" placeholder="Day">
