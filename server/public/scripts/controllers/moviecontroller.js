@@ -33,14 +33,16 @@ app.controller('MovieController', function ($http) {
         })
     }//end addMovie
     vm.deleteMovie = function (id) {
-        $http({
-            method: 'DELETE',
-            url: '/movies/' + id
-        }).then(function (response) {
-            getMovies();
-        }).catch(function (error) {
-            console.log('Error deleting movie', error)
-        })
+        if (confirm('Are you sure you want to delete this movie?')) {
+            $http({
+                method: 'DELETE',
+                url: '/movies/' + id
+            }).then(function (response) {
+                getMovies();
+            }).catch(function (error) {
+                console.log('Error deleting movie', error)
+            })
+        }
     }//end deleteMovie
     function getMovies() {
         $http({

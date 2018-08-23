@@ -13,7 +13,7 @@
    <input type="number" ng-model="mc.movieTime" placeholder="eg. 172">
    <label>Image:</label>
    <input type="text" ng-model="mc.movieUrl" placeholder="provide link to movie poster">
-   <button>Submit</button>
+   <md-button class="md-primary md-raised">Submit</md-button>
 </form>
 
 
@@ -22,8 +22,6 @@
     <img ng-src="{{movie.image_url}}" width="300px" height="300px" alt="movie poster">
     <p>{{movie.title}}</p>
     <p>{{movie.genre | uppercase}} -- {{movie.release_month}} {{movie.release_day}} {{movie.release_year}}</p>
-    <button ng-click="mc.deleteMovie(movie.id)">Delete</button>
+    <md-button class="md-primary md-raised" ng-click="mc.deleteMovie(movie.id)">Delete</md-button>
 </div>
 </div>
-
-{{mc.movieCollection}}

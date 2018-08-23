@@ -1,7 +1,7 @@
-const app = angular.module('MovieApp', ['ngRoute']);
+const app = angular.module('MovieApp', ['ngRoute', 'ngMaterial']);
 let genreCollection = [];
 
-app.config(function($routeProvider){
+app.config(function($routeProvider, $mdThemingProvider){
     $routeProvider.when('/', {
         template: '<h2>Movie Collection Home</h2>'
     })
@@ -16,4 +16,6 @@ app.config(function($routeProvider){
     .otherwise({
         template: '<h2>404: Page not found.</h2>'
     })
-})
+    $mdThemingProvider.theme('default')
+        
+});

@@ -18,18 +18,18 @@
     <!-- Controllers -->
     <script src="scripts/controllers/genrecontroller.js"></script>
     <script src="scripts/controllers/moviecontroller.js"></script>
+    <script src="scripts/controllers/materialcontroller.js"></script>    
     <link rel="stylesheet" href="styles/styles.css">
 
     
-    <title>Movie Collection</title>
+    <title>What Should We Watch? </title>
 </head>
 
 <body ng-app="MovieApp">
-    <h1>Movie Collection</h1>
+    <a id="header-link" href="/"><h1>What should we watch?</h1></a>
 
     <nav>
-        <a href="/">Home</a>
-        <a href="#!/movies">Add a Movie</a>
+        <a href="#!/movies">Dashboard</a>
         <a href="#!/genres">Manage Genres</a>
     </nav>
     <ng-view>
