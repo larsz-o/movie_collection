@@ -1,2 +1,28 @@
-{{mc.message}}
 
+<form ng-submit="mc.addMovie()">
+   <label>Add a Movie:</label>
+   <input type="text" ng-model="mc.movieTitle" placeholder="Title">
+   <!-- option values correspond with ids in genre table in the database -->
+   <label>Genre:</label>
+   <select ng-model="mc.movieGenre">
+    <option value="">---Select Genre---</option>
+    <option value="1">Action</option>
+    <option value="8">Children/Family</option>
+    <option value="4">Comedy</option>
+    <option value="9">Documentary</option>
+    <option value="7">Drama</option>
+    <option value="5">Fantasy</option>
+    <option value="2">Horror</option>
+    <option value="3">Musical</option>
+    <option value="10">Romantic Comedy</option>
+    <option value="6">Science Fiction</option>
+    <option value="11">Western</option>
+   </select>
+   <label>Release Date:</label>
+   <input type="date" ng-model="mc.movieDate" placeholder="eg. 5/1/2008">
+   <label>Run Time:</label>
+   <input type="number" ng-model="mc.movieTime" placeholder="eg. 172">
+   <label>Image:</label>
+   <input type="text" ng-model="mc.movieUrl" placeholder="provide link to movie poster">
+   <button>Submit</button>
+</form>
