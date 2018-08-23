@@ -42,5 +42,16 @@ app.controller('MovieController', function ($http) {
             alert('There was an error retrieving the movies'); 
         })
     }// end getMovies 
+    vm.deleteMovie = function(id){
+        $http({
+            method: 'DELETE', 
+            url: '/movies/' + id
+        }).then(function(response){
+            getMovies(); 
+        }).catch(function(error){
+            console.log('Error deleting movie', error )
+        })
+    }//end deleteMovie
 getMovies(); 
+
 })
