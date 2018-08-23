@@ -6,7 +6,9 @@ app.controller('MovieController', function ($http) {
     vm.addMovie = function () {
         let movieToAdd = {
             title: vm.movieTitle,
-            release_date: vm.movieDate,
+            release_month: vm.movieMonth,
+            release_day: vm.movieDay,
+            release_year: vm.movieYear,
             run_time: vm.movieTime,
             image_url: vm.movieUrl,
             genre_id: vm.movieGenre
@@ -19,7 +21,9 @@ app.controller('MovieController', function ($http) {
             getMovies(); 
             vm.movieTitle ='';
             vm.movieGenre = '';
-            vm.movieDate = '';
+            vm.movieMonth = '';
+            vm.movieDay = '';
+            vm.movieYear = '';
             vm.movieTime = '';
             vm.movieUrl = '';
         }).catch(function (error) {

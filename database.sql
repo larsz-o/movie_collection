@@ -1,9 +1,11 @@
 CREATE TABLE "movies" (
 	"id" serial primary key,
 	"title" varchar(120) not null, 
-	"release_date" date not null, 
+	"release_month" varchar (10), 
+	"release_day" int, 
+	"release_year" int not null,
 	"run_time" int not null, 
-	"image_url" varchar(250),
+	"image_url" varchar(250) default '../images/vhs.png',
     "genre_id" int references "genres" not null
 );
 
