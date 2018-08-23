@@ -5,8 +5,8 @@ const pool = require('../modules/pool.js');
 //GET route
 router.get('/', (req, res)=>{
     console.log('in genre GET route');
-    const query = `SELECT "genres"."id", "genres"."genre", COUNT("genres"."genre") FROM "genres" JOIN "movies" ON "genres"."id" = "movies"."genre_id" 
-    GROUP BY "genres"."genre", "genres"."id";`; 
+    const query = `SELECT "genres"."id", "genres"."genre", COUNT("movies"."genre_id") FROM "genres" LEFT JOIN "movies" ON "genres"."id" = "movies"."genre_id" 
+    GROUP BY "genres"."genre", "genres"."id" ORDER BY count DESC;`; 
     pool.query(query).then((results)=>{
         res.send(results.rows);
     }).catch((error)=>{

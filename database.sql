@@ -13,7 +13,7 @@ CREATE TABLE "genres" (
 	"id" serial primary key,
 	"genre" varchar(50) not null,
 );
-INSERT INTO "movies" ("title", "release_date", "run_time", "image_url", "genre_id") 
+INSERT INTO "movies" ("title", "release_month", "release_day", "release_year", "run_time", "image_url", "genre_id") 
 VALUES ($1, $2, $3, $4, $5); 
 
 INSERT INTO "genres" ("genre") 

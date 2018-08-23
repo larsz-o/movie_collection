@@ -1,8 +1,8 @@
 app.controller('GenreController', function ($http) {
     console.log('in GenreController');
     let vm = this;
-    vm.genreCollection = [];
-
+    vm.genreTableList = [];
+    
     vm.addGenre = function () {
         let newGenre = {
             genre: vm.genreIn
@@ -23,7 +23,7 @@ app.controller('GenreController', function ($http) {
             method: 'DELETE',
             url: '/genres/' + id
         }).then(function(response){
-            vm.genreCollection = response.data;
+            vm.genreTableList = response.data;
         }).catch(function(error){
             console.log('Error deleting genre', error); 
             alert('There was an error deleting this genre'); 
@@ -35,11 +35,11 @@ app.controller('GenreController', function ($http) {
             url: '/genres'
         }).then(function (response) {
             console.log('back from the server with', response.data);
-            vm.genreCollection = response.data;
+            vm.genreTableList = response.data;
             vm.genreIn = '';
         }).catch(function (error) {
             console.log('error getting genres', error);
         })
-    } // end getGenres
+    } // end getGenres 
     getGenres(); 
 })

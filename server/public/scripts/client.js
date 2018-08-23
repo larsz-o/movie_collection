@@ -1,4 +1,5 @@
 const app = angular.module('MovieApp', ['ngRoute']);
+let genreCollection = [];
 
 app.config(function($routeProvider){
     $routeProvider.when('/', {
