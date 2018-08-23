@@ -23,3 +23,5 @@ SELECT "movies"."title", "movies"."release_date", "movies"."run_time", "movies".
 FROM "movies" 
 JOIN "genres" ON "movies"."genre_id" = "genres"."id"; 
 
+SELECT "genres"."genre", COUNT("genres"."genre") FROM "genres" JOIN "movies" ON "genres"."id" = "movies"."genre_id" 
+GROUP BY "genres"."genre";

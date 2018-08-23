@@ -1,1 +1,20 @@
-{{gc.message}}
+<form ng-submit="gc.addGenre()">
+    <label>Add a Genre:</label>
+    <input type="text" ng-model="gc.genreIn" placeholder="genre name">
+    <button>Submit</button>
+</form>
+
+<table>
+    <thead>
+        <th>Genre</th>
+        <th>Total Movies</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="genre in gc.genreCollection">
+            <td>{{genre.genre}}</td>
+            <td>{{genre.count}}</td>
+            <td><button ng-click="gc.deleteGenre(genre.id)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
