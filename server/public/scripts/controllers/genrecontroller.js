@@ -2,7 +2,7 @@ app.controller('GenreController', function ($http) {
     console.log('in GenreController');
     let vm = this;
     vm.genreTableList = [];
-    
+
     vm.addGenre = function () {
         let newGenre = {
             genre: vm.genreIn
@@ -24,6 +24,7 @@ app.controller('GenreController', function ($http) {
             url: '/genres/' + id
         }).then(function(response){
             vm.genreTableList = response.data;
+            getGenres(); 
         }).catch(function(error){
             console.log('Error deleting genre', error); 
             alert('There was an error deleting this genre'); 
