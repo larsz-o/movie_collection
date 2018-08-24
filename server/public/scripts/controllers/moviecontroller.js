@@ -13,6 +13,7 @@ app.controller('MovieController', function ($http) {
             image_url: vm.movieUrl,
             genre_id: vm.movieGenre.id,
             ranking: '0',
+            favorite: false
         }
         if (vm.toggleAction == false) {
             $http({
@@ -60,7 +61,7 @@ app.controller('MovieController', function ($http) {
         } else {
             alert('Movies can only be ranked 0-10'); 
         }
-    }
+    }//end rankDown
     vm.rankUp = function (movie) {
         if (movie.ranking >= 0 && movie.ranking <= 9) {
             movie.ranking = movie.ranking + 1;
@@ -76,7 +77,19 @@ app.controller('MovieController', function ($http) {
         } else {
             alert('Movies can only be ranked 0-10'); 
         }
-    }
+    }// end rankUP
+    vm.toggleFavorites = function(movie){
+        movie.favorite = !movie.favorite; 
+        $http({
+            method: 'PUT',
+            url: '/movies/' + movie.id,
+            data: movie
+        }).then(function(response){
+            vm.favorites = response.data; 
+        }).catch(function(error){
+            console.log('Error marking favorite', error); 
+        })
+    } // end toggleFavorites 
         vm.updateMovie = function (id) {
             vm.toggleAction = true;
 

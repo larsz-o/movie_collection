@@ -14,6 +14,7 @@ app.controller('GenreController', function ($http) {
         }).then(function (response) {
             console.log('back from the server with', response);
             getGenres();
+            vm.genreIn = '';
         }).catch(function (error) {
             console.log('Error posting genres', error);
         })
