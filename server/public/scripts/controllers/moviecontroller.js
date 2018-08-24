@@ -13,21 +13,23 @@ app.controller('MovieController', function ($http) {
             image_url: vm.movieUrl,
             genre_id: vm.movieGenre.id
         }
-        $http({
-            method: 'POST',
-            url: '/movies',
-            data: movieToAdd
-        }).then(function () {
-            getMovies();
-            vm.movieTitle = '';
-            vm.movieGenre = '';
-            vm.movieDate = '';
-            vm.movieTime = '';
-            vm.movieUrl = '';
-        }).catch(function (error) {
-            console.log('Error posting movie', error);
-            alert('There was an error posting the movie.');
-        })
+        if (vm.toggleAction == false){
+            $http({
+                method: 'POST',
+                url: '/movies',
+                data: movieToAdd
+            }).then(function () {
+                getMovies();
+                vm.movieTitle = '';
+                vm.movieGenre = '';
+                vm.movieDate = '';
+                vm.movieTime = '';
+                vm.movieUrl = '';
+            }).catch(function (error) {
+                console.log('Error posting movie', error);
+                alert('There was an error posting the movie.');
+            })
+        }
     }//end addMovie
     vm.deleteMovie = function (id) {
         if (confirm('Are you sure you want to delete this movie?')) {
@@ -43,12 +45,19 @@ app.controller('MovieController', function ($http) {
     }//end deleteMovie
     vm.updateMovie = function(id){
         vm.toggleAction = true; 
+   
         $http({
             method: 'PUT', 
             url: '/movies/'+ id, 
-            data: movieToUpdate
+            data: movieToEdit
+        }).then(function(response){
+            console.log('back from the server with', response); 
+            getMovies(); 
+            vm.toggleAction = false;
+        }).catch(function(error){
+            console.log('Error updating movie', error); 
         })
-    }
+    }//end updateMovie
     function getGenres() {
         $http({
             method: 'GET',

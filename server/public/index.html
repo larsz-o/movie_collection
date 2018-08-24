@@ -15,7 +15,6 @@
     <script src="vendors/angular-material.min.js"></script>
     
     <script src="scripts/client.js"></script>
-    <script src="vendors/moment.js"></script>
     <!-- Controllers -->
     <script src="scripts/controllers/genrecontroller.js"></script>
     <script src="scripts/controllers/moviecontroller.js"></script>
@@ -27,12 +26,13 @@
 </head>
 
 <body ng-app="MovieApp">
+    <div class="header">
     <a id="header-link" href="/"><h1>What should we watch?</h1></a>
-
-    <nav>
+    <md-nav-bar nav-bar-aria-label="navigation links" class="nav">
         <a href="#!/movies">Dashboard</a>
         <a href="#!/genres">Manage Genres</a>
-    </nav>
+    </md-nav-bar>
+</div>
     <ng-view>
 
     </ng-view>

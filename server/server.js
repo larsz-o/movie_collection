@@ -4,8 +4,6 @@ const bodyParser = require('body-parser');
 const movies = require('./routers/movies-router.js'); 
 const genres = require('./routers/genres-router.js'); 
 
-
-
 const port = process.env.PORT || 5000; 
 
 app.use(express.static('server/public')); 
