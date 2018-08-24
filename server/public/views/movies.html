@@ -36,7 +36,7 @@
             <h3>{{movie.title}}</h3>
             <p>{{movie.genre}}</p>
             <p>{{movie.release_date | date: fullDate}}</p>
-            <p>Ranking: {{movie.ranking}}</p>
+            <p>Ranking: {{movie.ranking}}   <img src="../images/baseline-thumb_up_alt-24px.svg" ng-click="mc.rankUp(movie)"><img src="../images/baseline-thumb_down_alt-24px.svg" ng-click="mc.rankDown(movie)"></p>
             <button ng-click="mc.deleteMovie(movie.id)">Delete Movie</button>
         </div>
         </div>

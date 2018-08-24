@@ -44,6 +44,12 @@ app.controller('MovieController', function ($http) {
             })
         }
     }//end deleteMovie
+    vm.rankDown = function(movie){
+        movie.ranking = movie.ranking - 1; 
+    }
+    vm.rankUp = function(movie){
+        movie.ranking = movie.ranking + 1; 
+    }
     vm.updateMovie = function(id){
         vm.toggleAction = true; 
    
