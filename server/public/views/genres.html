@@ -17,7 +17,7 @@
         <tr ng-repeat="genre in gc.genreTableList">
             <td>{{genre.genre}}</td>
             <td>{{genre.count}}</td>
-            <td><button ng-click="gc.deleteGenre(genre.id)">Delete</button></td>
+            <td><button class="delete-button" ng-click="gc.deleteGenre(genre.id)">Delete</button></td>
         </tr>
     </tbody>
 </table>

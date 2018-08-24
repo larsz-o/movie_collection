@@ -9,11 +9,11 @@ a{
     font-size: 1.25em; 
 }
 button {
-    padding: 5px; 
+    padding: 10px; 
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     background-color: gray;
     color: white; 
-    font-size: 14px; 
+    font-size: 16px; 
     border-radius: 5px; 
 }
 form{
@@ -23,6 +23,10 @@ form{
 h1{
     text-align: center;
     font-size: 3em;  
+    text-shadow: 2px 2px 2px lightgray; 
+}
+h2 {
+    font-size: 2em; 
 }
 input {
     padding: 5px; 
@@ -79,6 +83,9 @@ tr:hover {
     padding: 0px; 
     line-height: .5em; 
 }
+.delete-button{
+    background-color: darkred; 
+}
 .header{
     background-image: url('../images/popcorn2.jpg'); 
     background-image: 30%;
@@ -90,7 +97,7 @@ tr:hover {
 }
 .nav-button {
     padding: 8px; 
-    background-color: #7468AE; 
+    background-color: darkred; 
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
     font-size: 24px; 
     border-radius: 5px; 
@@ -106,6 +113,9 @@ tr:hover {
 #movie-container {
     width: 90%;
     margin-left: 7%; 
+}
+#search-form{
+    text-align: right; 
 }
 
 
