@@ -1,8 +1,11 @@
-<form id="form-div" ng-submit="gc.addGenre()">
-    <h2><label>Add a Genre</label></h2>
-    <label>Genre: </label><input type="text" ng-model="gc.genreIn" placeholder="genre name">
-    <button>Submit</button>
-</form>
+<div id="form-div">
+    <form ng-submit="gc.addGenre()">
+        <h2><label>Add a Genre</label></h2>
+        <label>Genre: </label><input type="text" ng-model="gc.genreIn" placeholder="genre name">
+        <button>Submit</button>
+    </form>
+</div>
+
 
 <table>
     <thead>

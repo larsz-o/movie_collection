@@ -39,7 +39,18 @@ tr:hover {
     font-size: 1.5em;
     font-weight: bold
 }
-
+.card {
+    height: 450px;
+    padding: 10px;
+    margin: 20px;
+    float: left; 
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.container {
+    padding: 2px 16px;
+}
 .header{
     background-color: #e1d0e8; 
     padding: 5px;
@@ -48,11 +59,13 @@ tr:hover {
     text-align: center;
 }
 #form-div{
-   max-width: 600px; 
+   max-width: 90%; 
    text-align: center; 
    padding: 10px; 
+   display: inline-flex; 
 }
 #header-link{
     text-decoration: none;
 }
+
 

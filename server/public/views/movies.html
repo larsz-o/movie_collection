@@ -1,25 +1,29 @@
-<form id="form-div" ng-submit="mc.addMovie()">
-    <label ng-hide="mc.toggleAction"><h2>Add a Movie</label></h2><br/>
-    <label>Title: </label><input type="text" ng-model="mc.movieTitle" placeholder="Title"><br/>
-    <label>Genre: </label>
-    <select ng-options="genre.genre for genre in mc.genreTableList" ng-model="mc.movieGenre"></select><br/>
-    <label>Release Date: </label>
-    <input type="date" ng-model="mc.movieDate" placeholder="e.g. 6/15/99"><br/>
-    <label>Run Time: </label>
-    <input type="number" ng-model="mc.movieTime" placeholder="eg. 172"><br/>
-    <label>Image: </label>
-    <input type="text" ng-model="mc.movieUrl" placeholder="Image URL"><br/>
-    <button>Submit</button>
-</form>
-
-
-<div layout-md="row">
-    <div layout-md="column">
-        <div flex-gt-md="30" ng-repeat="movie in mc.movieCollection">
-            <img ng-src="{{movie.image_url}}" width="300px" height="300px" alt="movie poster">
+<div id="form-div">
+    <form ng-submit="mc.addMovie()">
+        <label ng-hide="mc.toggleAction"><h2>Add a Movie</label></h2><br/>
+        <label>Title: </label><input type="text" ng-model="mc.movieTitle" placeholder="Title">
+        <label>Genre: </label>
+        <select ng-options="genre.genre for genre in mc.genreTableList" ng-model="mc.movieGenre"></select>
+        <label>Release Date: </label>
+        <input type="date" ng-model="mc.movieDate" placeholder="e.g. 6/15/99">
+        <label>Run Time: </label>
+        <input type="number" ng-model="mc.movieTime" placeholder="eg. 172">
+        <label>Image: </label>
+        <input type="text" ng-model="mc.movieUrl" placeholder="Image URL">
+        <button>Submit</button>
+    </form>
+</div>
+<div id="movie-container">
+    <div class="card" ng-repeat="movie in mc.movieCollection">
+        <img ng-src="{{movie.image_url}}" width="300px" height="300px" alt="movie poster">
+        <div class="container">
             <p>{{movie.title}}</p>
-            <p>{{movie.genre | uppercase}} -- {{movie.release_date | date: fullDate}}</p>
+            <p>{{movie.genre}}</p>
+            <p>{{movie.release_date | date: fullDate}}</p>
             <button ng-click="mc.deleteMovie(movie.id)">Delete</button>
         </div>
     </div>
 </div>
+
+
+        
