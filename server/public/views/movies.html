@@ -6,22 +6,20 @@
    <label>Genre:</label>
    <select ng-options="genre.genre for genre in mc.genreTableList" ng-model="mc.movieGenre"></select>
    <label>Release Date:</label>
-   <input type="text" ng-model="mc.movieMonth" placeholder="Month">
-   <input type="number" ng-model="mc.movieDay" placeholder="Day">
-   <input type="number" ng-model="mc.movieYear" placeholder="Year">
+   <input type="date" ng-model="mc.movieDate" placeholder="e.g. 6/15/99">
    <label>Run Time:</label>
    <input type="number" ng-model="mc.movieTime" placeholder="eg. 172">
    <label>Image:</label>
    <input type="text" ng-model="mc.movieUrl" placeholder="provide link to movie poster">
-   <md-button class="md-primary md-raised">Submit</md-button>
+   <button>Submit</button>
 </form>
 
 
-<div class="container">
-<div ng-repeat="movie in mc.movieCollection">
+<div layout-md="row">
+<div flex="30" ng-repeat="movie in mc.movieCollection">
     <img ng-src="{{movie.image_url}}" width="300px" height="300px" alt="movie poster">
     <p>{{movie.title}}</p>
-    <p>{{movie.genre | uppercase}} -- {{movie.release_month}} {{movie.release_day}} {{movie.release_year}}</p>
-    <md-button class="md-primary md-raised" ng-click="mc.deleteMovie(movie.id)">Delete</md-button>
+    <p>{{movie.genre | uppercase}} -- {{movie.release_date | date: fullDate}}</p>
+    <button ng-click="mc.deleteMovie(movie.id)">Delete</button><button ng-click="mc.updateMovie(movie.id)">Update</button>
 </div>
 </div>

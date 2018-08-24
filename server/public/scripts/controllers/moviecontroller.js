@@ -3,13 +3,12 @@ app.controller('MovieController', function ($http) {
     let vm = this;
     vm.movieCollection = [];
     vm.genreTableList = [];
+    vm.toggleAction = false; 
 
     vm.addMovie = function () {
         let movieToAdd = {
             title: vm.movieTitle,
-            release_month: vm.movieMonth,
-            release_day: vm.movieDay,
-            release_year: vm.movieYear,
+            release_date: vm.movieDate,
             run_time: vm.movieTime,
             image_url: vm.movieUrl,
             genre_id: vm.movieGenre.id
@@ -22,9 +21,7 @@ app.controller('MovieController', function ($http) {
             getMovies();
             vm.movieTitle = '';
             vm.movieGenre = '';
-            vm.movieMonth = '';
-            vm.movieDay = '';
-            vm.movieYear = '';
+            vm.movieDate = '';
             vm.movieTime = '';
             vm.movieUrl = '';
         }).catch(function (error) {
@@ -44,17 +41,14 @@ app.controller('MovieController', function ($http) {
             })
         }
     }//end deleteMovie
-    function getMovies() {
+    vm.updateMovie = function(id){
+        vm.toggleAction = true; 
         $http({
-            method: 'GET',
-            url: '/movies'
-        }).then(function (response) {
-            vm.movieCollection = response.data;
-        }).catch(function (error) {
-            console.log('Error getting movies', error);
-            alert('There was an error retrieving the movies');
+            method: 'PUT', 
+            url: '/movies/'+ id, 
+            data: movieToUpdate
         })
-    }// end getMovies 
+    }
     function getGenres() {
         $http({
             method: 'GET',
@@ -67,6 +61,18 @@ app.controller('MovieController', function ($http) {
             console.log('error getting genres', error);
         })
     } // end getGenres 
+    function getMovies() {
+        $http({
+            method: 'GET',
+            url: '/movies'
+        }).then(function (response) {
+            vm.movieCollection = response.data;
+        }).catch(function (error) {
+            console.log('Error getting movies', error);
+            alert('There was an error retrieving the movies');
+        })
+    }// end getMovies 
+
 
     getGenres();
     getMovies();
