@@ -3,15 +3,18 @@ html, body{
     font-family: 'M PLUS 1p', sans-serif;
 }
 a{
-    text-decoration: none; 
-    color: #333333; 
+    text-decoration: none;   
+    color: black; 
     padding: 10px;
     font-size: 1.25em; 
+    font-weight: bold; 
 }
 button {
-    margin: 4px 2px;
+    padding: 5px; 
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    padding: 10px; 
+    background-color: gray;
+    color: white; 
+    font-size: 14px; 
 }
 form{
     padding: 10px;
@@ -19,7 +22,7 @@ form{
 }
 h1{
     text-align: center;
-    font-size: 3em; 
+    font-size: 3em;  
 }
 input {
     margin: 5px;
@@ -52,6 +55,12 @@ tr:hover {
 .border{
     border-left: 1px solid black; 
 }
+.nav-button {
+    padding: 9px; 
+    background-color: lightgray; 
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); 
+    font-size: 24px; 
+}
 .card {
     height: 500px;
     padding: 10px;
@@ -67,8 +76,9 @@ tr:hover {
     line-height: .5em; 
 }
 .header{
-    background-color:#7EABA6;
-    color: white;  
+    background-image: url('../images/popcorn2.jpg'); 
+    background-image: 30%;
+    background-color:#7EABA6;  
     padding: 5px;
 }
 .nav{

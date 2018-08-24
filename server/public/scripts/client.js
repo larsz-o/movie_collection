@@ -2,7 +2,7 @@ const app = angular.module('MovieApp', ['ngRoute', 'ngMaterial']);
 
 app.config(function ($routeProvider, $mdThemingProvider) {
     $routeProvider.when('/', {
-        template: '<h2>Movie Collection Home</h2>'
+        templateUrl: 'views/home.html'
     })
         .when('/movies', {
             templateUrl: 'views/movies.html',
