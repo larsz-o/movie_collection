@@ -5,8 +5,8 @@ const pool = require('../modules/pool.js');
 //GET routes
 router.get('/', (req, res) => {
     console.log('in movies GET route');
-    const query = `SELECT "movies"."id", "movies"."title", "movies"."release_date", "movies"."run_time", "movies"."image_url", "genres"."genre" FROM "movies" 
-    JOIN "genres" ON "movies"."genre_id" = "genres"."id";`;
+    const query = `SELECT "movies"."id", "movies"."title", "movies"."release_date", "movies"."run_time", "movies"."image_url", "genres"."genre", "movies"."ranking" FROM "movies" 
+    JOIN "genres" ON "movies"."genre_id" = "genres"."id" ORDER BY "movies"."id" ASC;`;
     pool.query(query).then((results) => {
         console.log(results);
         res.send(results.rows);
@@ -21,9 +21,9 @@ router.post('/', (req, res) => {
     console.log('in movies POST route');
     const newMovie = req.body;
     console.log(newMovie);
-    const query = `INSERT INTO "movies" ("title", "release_date", "run_time", "image_url", "genre_id") 
-    VALUES ($1, $2, $3, $4, $5);`;
-    pool.query(query, [newMovie.title, newMovie.release_date, newMovie.run_time, newMovie.image_url, newMovie.genre_id]).then(() => {
+    const query = `INSERT INTO "movies" ("title", "release_date", "run_time", "image_url", "genre_id", "ranking") 
+    VALUES ($1, $2, $3, $4, $5, $6);`;
+    pool.query(query, [newMovie.title, newMovie.release_date, newMovie.run_time, newMovie.image_url, newMovie.genre_id, newMovie.ranking]).then(() => {
         res.sendStatus(201);
     }).catch((error) => {
         console.log('Error posting movie', error);

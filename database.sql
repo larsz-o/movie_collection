@@ -4,7 +4,8 @@ CREATE TABLE "movies" (
 	"release_date" date not null,
 	"run_time" int not null, 
 	"image_url" varchar(250) default '../images/vhs.png',
-    "genre_id" int references "genres" not null
+    "genre_id" int references "genres" not null,
+	"ranking" int
 );
 
 CREATE TABLE "genres" (

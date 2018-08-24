@@ -11,7 +11,8 @@ app.controller('MovieController', function ($http) {
             release_date: vm.movieDate,
             run_time: vm.movieTime,
             image_url: vm.movieUrl,
-            genre_id: vm.movieGenre.id
+            genre_id: vm.movieGenre.id,
+            ranking: '0',
         }
         if (vm.toggleAction == false){
             $http({

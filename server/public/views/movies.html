@@ -1,29 +1,47 @@
 <div id="form-div">
     <form ng-submit="mc.addMovie()">
         <label ng-hide="mc.toggleAction"><h2>Add a Movie</label></h2><br/>
-        <label>Title: </label><input type="text" ng-model="mc.movieTitle" placeholder="Title">
+        <label>Title: </label><input type="text" ng-model="mc.movieTitle" placeholder="e.g. Twister">
         <label>Genre: </label>
-        <select ng-options="genre.genre for genre in mc.genreTableList" ng-model="mc.movieGenre"></select>
+        <select ng-options="genre.genre for genre in mc.genreTableList | orderBy: 'genre'" ng-model="mc.movieGenre"></select>
         <label>Release Date: </label>
         <input type="date" ng-model="mc.movieDate" placeholder="e.g. 6/15/99">
         <label>Run Time: </label>
         <input type="number" ng-model="mc.movieTime" placeholder="eg. 172">
         <label>Image: </label>
-        <input type="text" ng-model="mc.movieUrl" placeholder="Image URL">
+        <input type="text" ng-model="mc.movieUrl" placeholder="e.g. https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Twistermovieposter.jpg/220px-Twistermovieposter.jpg">
         <button>Submit</button>
     </form>
+    <form>
+        <label>Search by Title or Genre: </label>
+        <input type="text" ng-model="mc.search" placeholder="e.g. comedy">
+        <label>Filter By: </label>
+        <select ng-model="mc.filter">
+            <option value="">---Select Filter---</option>
+            <option value="title">Title: A-Z</option>
+            <option value="-title">Title: Z-A</option>
+            <option value="release_date">Date: Oldest to Newest</option>
+            <option value="-release_date">Date: Newest to Oldest</option>
+            <option value="run_time">Run Time: Longest to Shortest</option>
+            <option value="-run_time">Run Time: Shortest to Longest</option>
+        </select>
+    </form>
 </div>
+
+
 <div id="movie-container">
-    <div class="card" ng-repeat="movie in mc.movieCollection">
+    <div class="card" ng-repeat="movie in mc.movieCollection | orderBy: mc.filter: false | filter: mc.search">
         <img ng-src="{{movie.image_url}}" width="300px" height="300px" alt="movie poster">
         <div class="container">
-            <p>{{movie.title}}</p>
+            <h3>{{movie.title}}</h3>
             <p>{{movie.genre}}</p>
             <p>{{movie.release_date | date: fullDate}}</p>
-            <button ng-click="mc.deleteMovie(movie.id)">Delete</button>
+            <p>Ranking: {{movie.ranking}}</p>
+            <button ng-click="mc.deleteMovie(movie.id)">Delete Movie</button>
+        </div>
         </div>
     </div>
-</div>
+
 
 
         

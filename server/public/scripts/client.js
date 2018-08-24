@@ -16,7 +16,7 @@ app.config(function ($routeProvider, $mdThemingProvider) {
             template: '<h2>404: Page not found.</h2>'
         })
     $mdThemingProvider.theme('default')
-        .primaryPalette('purple')
+        .primaryPalette('blue-grey')
         .accentPalette('teal');
 
 });
