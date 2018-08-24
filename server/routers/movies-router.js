@@ -6,7 +6,7 @@ const pool = require('../modules/pool.js');
 router.get('/', (req, res) => {
     console.log('in movies GET route');
     const query = `SELECT "movies"."id", "movies"."title", "movies"."release_date", "movies"."run_time", "movies"."image_url", "genres"."genre", "movies"."ranking" FROM "movies" 
-    JOIN "genres" ON "movies"."genre_id" = "genres"."id" ORDER BY "movies"."id" ASC;`;
+    JOIN "genres" ON "movies"."genre_id" = "genres"."id" ORDER BY "movies"."id" DESC;`;
     pool.query(query).then((results) => {
         console.log(results);
         res.send(results.rows);
