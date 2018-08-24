@@ -46,9 +46,28 @@ app.controller('MovieController', function ($http) {
     }//end deleteMovie
     vm.rankDown = function(movie){
         movie.ranking = movie.ranking - 1; 
+        console.log('in rank down', movie);
+        $http({
+            method: 'PUT',
+            url: '/movies/' + movie.id,
+            data: movie
+        }).then(function(response){
+            getMovies(); 
+        }).catch(function(error){
+            console.log('Error updating ranking', error); 
+        })
     }
     vm.rankUp = function(movie){
         movie.ranking = movie.ranking + 1; 
+        $http({
+            method: 'PUT',
+            url: '/movies/' + movie.id,
+            data: movie
+        }).then(function(response){
+            getMovies(); 
+        }).catch(function(error){
+            console.log('Error updating ranking', error); 
+        })
     }
     vm.updateMovie = function(id){
         vm.toggleAction = true; 
