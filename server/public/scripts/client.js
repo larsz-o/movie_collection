@@ -12,6 +12,10 @@ app.config(function ($routeProvider, $mdThemingProvider) {
             templateUrl: 'views/genres.html',
             controller: 'GenreController as gc'
         })
+        .when('/favorites', {
+            templateUrl: 'views/favorites.html',
+            controller: 'FavoritesController as fc'
+        })
         .otherwise({
             template: '<h2>404: Page not found.</h2>'
         })
