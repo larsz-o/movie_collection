@@ -97,7 +97,8 @@ app.controller('MovieController', function ($http) {
             url: '/movies/' + movie.id,
             data: movie
         }).then(function (response) {
-            vm.favorites = response.data;
+            console.log('back from the server with', response);
+            getMovies(); 
         }).catch(function (error) {
             console.log('Error marking favorite', error);
         })

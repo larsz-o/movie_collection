@@ -1,3 +1,7 @@
+<form class="search-form">
+    <label>Search by Genre: </label>
+    <input type="text" ng-model="mc.search" placeholder="e.g. comedy">
+</form>
 <div id="form-div">
     <form ng-submit="gc.addGenre()">
         <h2><label>Add a Genre</label></h2>
@@ -5,8 +9,6 @@
         <button>Submit</button>
     </form>
 </div>
-
-
 <table>
     <thead>
         <th>Genre</th>
