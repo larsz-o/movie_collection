@@ -45,6 +45,18 @@ app.controller('MovieController', function ($http) {
             })
         }
     }//end deleteMovie
+    vm.favorite = function (movie) {
+        movie.favorite = !movie.favorite; 
+        $http({
+            method: 'PUT',
+            url: '/movies/' + movie.id,
+            data: movie
+        }).then(function (response) {
+            getMovies();
+        }).catch(function (error) {
+            console.log('Error favoriting movie', error);
+        })
+    } // end favorite 
     vm.rankDown = function (movie) {
         if (movie.ranking >= 1 && movie.ranking <= 10) {
             movie.ranking = movie.ranking - 1;
@@ -59,7 +71,7 @@ app.controller('MovieController', function ($http) {
                 console.log('Error updating ranking', error);
             })
         } else {
-            alert('Movies can only be ranked 0-10'); 
+            alert('Movies can only be ranked 0-10');
         }
     }//end rankDown
     vm.rankUp = function (movie) {
@@ -75,62 +87,62 @@ app.controller('MovieController', function ($http) {
                 console.log('Error updating ranking', error);
             })
         } else {
-            alert('Movies can only be ranked 0-10'); 
+            alert('Movies can only be ranked 0-10');
         }
     }// end rankUP
-    vm.toggleFavorites = function(movie){
-        movie.favorite = !movie.favorite; 
+    vm.toggleFavorites = function (movie) {
+        movie.favorite = !movie.favorite;
         $http({
             method: 'PUT',
             url: '/movies/' + movie.id,
             data: movie
-        }).then(function(response){
-            vm.favorites = response.data; 
-        }).catch(function(error){
-            console.log('Error marking favorite', error); 
+        }).then(function (response) {
+            vm.favorites = response.data;
+        }).catch(function (error) {
+            console.log('Error marking favorite', error);
         })
     } // end toggleFavorites 
-        vm.updateMovie = function (id) {
-            vm.toggleAction = true;
+    vm.updateMovie = function (id) {
+        vm.toggleAction = true;
 
-            $http({
-                method: 'PUT',
-                url: '/movies/' + id,
-                data: movieToEdit
-            }).then(function (response) {
-                console.log('back from the server with', response);
-                getMovies();
-                vm.toggleAction = false;
-            }).catch(function (error) {
-                console.log('Error updating movie', error);
-            })
-        }//end updateMovie
-        function getGenres() {
-            $http({
-                method: 'GET',
-                url: '/genres'
-            }).then(function (response) {
-                console.log('back from the server with', response.data);
-                vm.genreTableList = response.data;
-                vm.genreIn = '';
-            }).catch(function (error) {
-                console.log('error getting genres', error);
-            })
-        } // end getGenres 
-        function getMovies() {
-            $http({
-                method: 'GET',
-                url: '/movies'
-            }).then(function (response) {
-                vm.movieCollection = response.data;
-            }).catch(function (error) {
-                console.log('Error getting movies', error);
-                alert('There was an error retrieving the movies');
-            })
-        }// end getMovies 
+        $http({
+            method: 'PUT',
+            url: '/movies/' + id,
+            data: movieToEdit
+        }).then(function (response) {
+            console.log('back from the server with', response);
+            getMovies();
+            vm.toggleAction = false;
+        }).catch(function (error) {
+            console.log('Error updating movie', error);
+        })
+    }//end updateMovie
+    function getGenres() {
+        $http({
+            method: 'GET',
+            url: '/genres'
+        }).then(function (response) {
+            console.log('back from the server with', response.data);
+            vm.genreTableList = response.data;
+            vm.genreIn = '';
+        }).catch(function (error) {
+            console.log('error getting genres', error);
+        })
+    } // end getGenres 
+    function getMovies() {
+        $http({
+            method: 'GET',
+            url: '/movies'
+        }).then(function (response) {
+            vm.movieCollection = response.data;
+        }).catch(function (error) {
+            console.log('Error getting movies', error);
+            alert('There was an error retrieving the movies');
+        })
+    }// end getMovies 
 
 
-        getGenres();
-        getMovies();
+    getGenres();
+    getMovies();
 
-    })
+})

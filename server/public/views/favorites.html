@@ -6,7 +6,7 @@
             <th>Actions</th>
         </thead>
         <tbody>
-            <tr>
+            <tr ng-repeat="movie in fc.movieCollection" ng-show="movie.favorite">
                 <td>Movie Title</td>
                 <td><button>Delete</button></td>
             </tr>
