@@ -1,4 +1,4 @@
-const app = angular.module('MovieApp', ['ngRoute', 'ngMaterial']);
+const app = angular.module('MovieApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 
 app.config(function ($routeProvider, $mdThemingProvider) {
     $routeProvider.when('/', {
