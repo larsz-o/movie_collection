@@ -3,23 +3,25 @@ app.controller('MovieController', function ($http) {
     let vm = this;
     vm.movieCollection = [];
     vm.genreTableList = [];
+    vm.toggleAction = false;
 
     vm.addMovie = function () {
-        let movieToAdd = {
-            title: vm.movieTitle,
-            release_date: vm.movieDate,
-            run_time: vm.movieTime,
-            image_url: vm.movieUrl,
-            genre_id: vm.movieGenre.id,
-            ranking: '0',
-            favorite: false
-        }
         if (vm.toggleAction == false) {
+            let movieToAdd = {
+                title: vm.movieTitle,
+                release_date: vm.movieDate,
+                run_time: vm.movieTime,
+                image_url: vm.movieUrl,
+                genre_id: vm.movieGenre.id,
+                ranking: '0',
+                favorite: false
+            }
             $http({
                 method: 'POST',
                 url: '/movies',
                 data: movieToAdd
-            }).then(function () {
+            }).then(function (response) {
+                console.log('back from the server with', response);
                 getMovies();
                 vm.movieTitle = '';
                 vm.movieGenre = '';
@@ -45,7 +47,7 @@ app.controller('MovieController', function ($http) {
         }
     }//end deleteMovie
     vm.favorite = function (movie) {
-        movie.favorite = !movie.favorite; 
+        movie.favorite = !movie.favorite;
         $http({
             method: 'PUT',
             url: '/movies/' + movie.id,
@@ -97,26 +99,39 @@ app.controller('MovieController', function ($http) {
             data: movie
         }).then(function (response) {
             console.log('back from the server with', response);
-            getMovies(); 
+            getMovies();
         }).catch(function (error) {
             console.log('Error marking favorite', error);
         })
     } // end toggleFavorites 
-    vm.updateMovie = function (id) {
-        let movieToEdit ={
-
+    vm.updateMovie = function (movie) {
+        vm.toggleAction = true;
+        /// an $mdDialog in here that captures this information in diff. ng-models, 
+        /// will cause a delay that lets users figure out what they want to edit 
+        /// right now, it goes straight through so causes errors 
+        vm.movieTitle = movie.title;
+        vm.genre_id = movie.genre_id;
+        vm.movieTime = movie.run_time;
+        vm.movieUrl = movie.image_url;
+        if (vm.toggleAction == true) {
+            let movieToUpdate = {
+                title: vm.movieTitle,
+                release_date: vm.movieDate,
+                run_time: vm.movieTime,
+                image_url: vm.movieUrl
+            } //genre does not get updated here (yet)
+            $http({
+                method: 'PUT',
+                url: '/movies/update/' + movie.id,
+                data: movieToUpdate
+            }).then(function (response) {
+                console.log('back from the server with', response);
+                getMovies();
+                vm.toggleAction = false;
+            }).catch(function (error) {
+                console.log('Error updating movie', error);
+            })
         }
-        $http({
-            method: 'PUT',
-            url: '/movies/' + id,
-            data: movieToUpdate
-        }).then(function (response) {
-            console.log('back from the server with', response);
-            getMovies();
-            vm.toggleAction = false;
-        }).catch(function (error) {
-            console.log('Error updating movie', error);
-        })
     }//end updateMovie
     function getGenres() {
         $http({

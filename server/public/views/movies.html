@@ -18,8 +18,8 @@
 
 <div id="form-div">
     <form ng-submit="mc.addMovie()">
-        <label ng-hide="mc.toggleAction"><h2>Add a Movie</label></h2><br/>
-        <label>Title: </label><input type="text" ng-model="mc.movieTitle" placeholder="e.g. Twister">
+        <label ><h2 ng-hide="mc.toggleAction">Add a Movie</label></h2><label><h2 ng-show="mc.toggleAction">Edit Movie</label></h2><br/>
+        <label id="movie-input">Title: </label><input type="text" ng-model="mc.movieTitle" placeholder="e.g. Twister">
         <label>Genre: </label>
         <select ng-options="genre.genre for genre in mc.genreTableList | orderBy: 'genre'" ng-model="mc.movieGenre">
             <option value=''>---Select Genre---</option> 
@@ -42,7 +42,8 @@
             <p>Genre: {{movie.genre}}</p>
             <p>Ranking: {{movie.ranking}}</p>   
             <img src="../images/baseline-thumb_up_alt-24px.svg" ng-click="mc.rankUp(movie)"><img src="../images/baseline-thumb_down_alt-24px.svg" ng-click="mc.rankDown(movie)">  <img src="../images/2764.png" ng-show="movie.favorite"><br/><br/>
-            <button ng-click="mc.favorite(movie)">Favorite</button>
+            <button ng-click="mc.favorite(movie)">Favorite</button> 
+            <button ng-click="mc.updateMovie(movie)">Update</button><br/>
             <button class="delete-button" ng-click="mc.deleteMovie(movie.id)">Delete Movie</button>
         </div>
         </div>

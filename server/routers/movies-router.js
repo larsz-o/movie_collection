@@ -56,5 +56,18 @@ router.put('/:id', (req, res)=>{
         console.log('Error updating movie', error);
         res.sendStatus(500);
     })
+})//end update all categories PUT route
+
+router.put('/update/:id', (req, res)=>{
+    console.log('in movies PUT route');
+    const movieToEdit = req.params.id; 
+    const detailsToEdit = req.body;
+    const query = `UPDATE "movies" SET "title" = $1, "release_date" = $2, "run_time" = $3, "image_url" = $4 WHERE "id" = $5;`;
+    pool.query(query, [detailsToEdit.title, detailsToEdit.release_date, detailsToEdit.run_time, detailsToEdit.image_url, movieToEdit]).then((response)=>{
+        res.sendStatus(200);
+    }).catch((error)=>{
+        console.log('Error updating movie', error);
+        res.sendStatus(500);
+    })
 })
 module.exports = router; 
