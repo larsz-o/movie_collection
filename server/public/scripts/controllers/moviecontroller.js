@@ -3,33 +3,65 @@ app.controller('MovieController', function ($http) {
     let vm = this;
     vm.movieCollection = [];
     vm.genreTableList = [];
+    vm.toggleEdit = false;
+
+    let movieToEdit = {
+        id: 0, 
+    }
 
     vm.addMovie = function () {
-        let movieToAdd = {
-            title: vm.movieTitle,
-            release_date: vm.movieDate,
-            run_time: vm.movieTime,
-            image_url: vm.movieUrl,
-            genre_id: vm.movieGenre.id,
-            ranking: '0',
-            favorite: false
+        if (vm.toggleEdit === false) {
+            let movieToAdd = {
+                title: vm.movieTitle,
+                release_date: vm.movieDate,
+                run_time: vm.movieTime,
+                image_url: vm.movieUrl,
+                genre_id: vm.movieGenre.id,
+                ranking: '0',
+                favorite: false
+            }
+            $http({
+                method: 'POST',
+                url: '/movies',
+                data: movieToAdd
+            }).then(function (response) {
+                console.log('back from the server with', response);
+                getMovies();
+                vm.movieTitle = '';
+                vm.movieGenre = '';
+                vm.movieDate = '';
+                vm.movieTime = '';
+                vm.movieUrl = '';
+            }).catch(function (error) {
+                console.log('Error posting movie', error);
+                alert('There was an error posting the movie.');
+            })
+        } else {
+            movieToEdit.id = movieToEdit.id; 
+            movieToEdit.title = vm.movieTitle;
+            movieToEdit.release_date = vm.movieDate;
+            movieToEdit.run_time = vm.movieTime;
+            movieToEdit.image_url = vm.movieUrl;
+            movieToEdit.genre_id = vm.movieGenre.id; 
+            console.log(movieToEdit); 
+            $http({
+                method: 'PUT',
+                url: '/movies/update/' + movieToEdit.id,
+                data: movieToEdit
+            }).then(function(response){
+                console.log('back from the server with', response);
+                getMovies();
+                vm.movieTitle = '';
+                vm.movieGenre = '';
+                vm.movieDate = '';
+                vm.movieTime = '';
+                vm.movieUrl = '';
+                vm.toggleEdit = false; 
+            }).catch(function (error) {
+                console.log('Error updating movie', error);
+                alert('There was an error updating the movie.');
+            })
         }
-        $http({
-            method: 'POST',
-            url: '/movies',
-            data: movieToAdd
-        }).then(function (response) {
-            console.log('back from the server with', response);
-            getMovies();
-            vm.movieTitle = '';
-            vm.movieGenre = '';
-            vm.movieDate = '';
-            vm.movieTime = '';
-            vm.movieUrl = '';
-        }).catch(function (error) {
-            console.log('Error posting movie', error);
-            alert('There was an error posting the movie.');
-        })
     }//end addMovie
     vm.deleteMovie = function (id) {
         if (confirm('Are you sure you want to delete this movie?')) {
@@ -101,6 +133,14 @@ app.controller('MovieController', function ($http) {
             console.log('Error marking favorite', error);
         })
     } // end toggleFavorites 
+
+    vm.updateMovie = function (movie) {
+        vm.toggleEdit = true;
+        movieToEdit.id = movie.id;
+        vm.movieTitle = movie.title;
+        vm.movieTime = movie.run_time;
+        vm.movieUrl = movie.image_url;
+    }
     function getGenres() {
         $http({
             method: 'GET',

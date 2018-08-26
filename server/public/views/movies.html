@@ -17,10 +17,10 @@
 
 
 <div layout="column" ng-cloak class="md-form">
-    <md-content>
-        <label><h2>Add a Movie</label></h2>
-    </md-content>
-    <form ng-submit="mc.addMovie()">
+    <form>
+        <md-content>
+            <label><h2 ng-hide="mc.toggleEdit">Add a Movie</label></h2><label><h2 ng-show="mc.toggleEdit">Edit Movie</label></h2>
+        </md-content>
         <md-content>
             <label id="movie-input">Title: </label><input type="text" ng-model="mc.movieTitle" placeholder="e.g. Twister">
             <label>Genre: </label>
@@ -37,16 +37,16 @@
             <input type="number" ng-model="mc.movieTime" placeholder="eg. 172">
             <label>Image: </label>
             <input type="text" ng-model="mc.movieUrl" placeholder="e.g. https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Twistermovieposter.jpg/220px-Twistermovieposter.jpg">
-            <md-button class="md-raised md-primary">Submit</md-button>
+            <md-button ng-click="mc.addMovie()"class="md-raised md-primary">Submit</md-button>
         </md-content>
     </form>
 </div>
 
 <div id="movie-container">
     <div class="card" ng-repeat="movie in mc.movieCollection | orderBy: mc.filter: false | filter: mc.search">
-        <div class="card-header">  
-                <img ng-click="mc.favorite(movie)" src="../images/like.png" ng-hide="movie.favorite">
-                <img ng-click="mc.favorite(movie)" ng-show="movie.favorite" src="../images/2764.png">
+        <div class="card-header">
+            <img ng-click="mc.favorite(movie)" src="../images/like.png" ng-hide="movie.favorite">
+            <img ng-click="mc.favorite(movie)" ng-show="movie.favorite" src="../images/2764.png">
         </div>
         <img ng-src="{{movie.image_url}}" width="300px" height="300px" alt="movie poster">
         <div class="container">
@@ -55,8 +55,8 @@
             <p>Genre: {{movie.genre}}</p>
             <p>Ranking: {{movie.ranking}}</p>
             <img src="../images/baseline-thumb_up_alt-24px.svg" ng-click="mc.rankUp(movie)"><img src="../images/baseline-thumb_down_alt-24px.svg"
-                ng-click="mc.rankDown(movie)"> <br/><br/>
-            <md-button ng-click="mc.updateMovie(movie)">Update</md-button><br/>
+                ng-click="mc.rankDown(movie)"><br/><br/>
+            <md-button ng-click="mc.updateMovie(movie)">Edit</md-button><br/>
             <md-button class="delete-button" ng-click="mc.deleteMovie(movie.id)">Delete Movie</md-button>
         </div>
     </div>
