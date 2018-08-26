@@ -9,7 +9,8 @@
     <script src="vendors/angular-route.min.js"></script>
     <!-- Angular Material -->
     <script src="vendors/angular-material.js"></script>
-    <link href="vendors/angular-material.css" rel="stylesheet" type="text/css"></script>
+    <link href="vendors/angular-material.css" rel="stylesheet" type="text/css">
+    </script>
     <script src="vendors/angular-animate.min.js"></script>
     <script src="vendors/angular-aria.min.js"></script>
     <script src="vendors/angular-messages.min.js"></script>
@@ -33,11 +34,11 @@
 <body ng-app="MovieApp">
     <div class="header">
         <a id="header-link" href="/"><h1>What should we watch?</h1></a>
-        <md-nav-bar nav-bar-aria-label="navigation links" class="nav">
+        <div class="nav">
             <a class="nav-button" href="#!/movies">Dashboard</a>
             <a class="nav-button" href="#!/genres">Genres</a>
             <a class="nav-button" href="#!/favorites">Favorites</a>
-        </md-nav-bar>
+        </div>
     </div>
     <ng-view>
 

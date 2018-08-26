@@ -74,6 +74,9 @@ tr:hover {
     margin: 20px;
     float: left; 
 }
+.card-header{
+    text-align: right; 
+}
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
@@ -90,7 +93,7 @@ tr:hover {
     background-image: url('../images/popcorn2.jpg'); 
     background-image: 30%;
     background-color:#7EABA6;  
-    padding: 5px;
+    padding: 25px;
 }
 .nav{
     text-align: center;
