@@ -1,4 +1,4 @@
-app.controller('GenreController', function ($http) {
+app.controller('GenreController', function ($http, $mdDialog) {
     console.log('in GenreController');
     let vm = this;
     vm.genreTableList = [];
@@ -46,5 +46,34 @@ app.controller('GenreController', function ($http) {
             console.log('error getting genres', error);
         })
     } // end getGenres 
+    vm.updateGenre = function (event, id) {
+        console.log(id);
+        // Appending dialog to document.body to cover sidenav in docs app
+        let confirm = $mdDialog.prompt()
+            .title('What would you like to change this genre to?')
+            .textContent('Romantic Dramedies are always popular.')
+            .placeholder('Genre name')
+            .ariaLabel('Genre name')
+            .targetEvent(event)
+            .required(true)
+            .ok('Confirm')
+            .cancel('Cancel');
+
+        $mdDialog.show(confirm).then(function (result) {
+            $http({
+                method: 'PUT',
+                url: '/genres/' + id,
+                data: { genre: result }
+            }).then(function (response) {
+                console.log('back from the server with', response);
+                getGenres();
+            }).catch(function (error) {
+                console.log('Error updating movie', error);
+            })
+        })
+    };
+
+
+
     getGenres();
 })

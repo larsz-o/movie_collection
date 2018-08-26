@@ -73,6 +73,7 @@ tr:hover {
     padding: 10px;
     margin: 20px;
     float: left; 
+    border: 1px solid gray;
 }
 .card-header{
     text-align: right; 

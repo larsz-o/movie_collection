@@ -55,7 +55,7 @@
             <p>Ranking: {{movie.ranking}}</p>
             <img src="../images/baseline-thumb_up_alt-24px.svg" ng-click="mc.rankUp(movie)"><img src="../images/baseline-thumb_down_alt-24px.svg"
                 ng-click="mc.rankDown(movie)"> <br/><br/>
-            <md-button class="md-primary" ng-click="mc.updateMovie(movie)">Update</md-button><br/>
+            <md-button ng-click="mc.updateMovie(movie)">Update</md-button><br/>
             <md-button class="delete-button" ng-click="mc.deleteMovie(movie.id)">Delete Movie</md-button>
         </div>
     </div>

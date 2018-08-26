@@ -41,4 +41,17 @@ router.delete('/:id', (req, res)=>{
     })
 })//end genre DELETE route 
 
+router.put('/:id', (req, res)=>{
+    console.log('in genre PUT route');
+    const genreToEdit = req.params.id;
+    const newGenre = req.body;
+    const query = `UPDATE "genres" SET "genre" = $1 WHERE "id" = $2;`;
+    pool.query(query, [newGenre.genre, genreToEdit]).then((response)=>{
+        res.sendStatus(200);
+    }).catch((error)=>{
+        console.log('error updating genre');
+        res.sendStatus(500);
+    })
+})//end genre PUT route
+
 module.exports = router; 

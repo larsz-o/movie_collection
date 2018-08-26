@@ -2,7 +2,7 @@
     <form ng-submit="gc.addGenre()">
         <h2><label>Add a Genre</label></h2>
         <label>Genre: </label><input type="text" ng-model="gc.genreIn" placeholder="e.g. romantic dramedy">
-        <button>Submit</button>
+        <md-button class="md-raised md-primary">Submit</md-button>
     </form>
 </div>
 <table>
@@ -15,7 +15,9 @@
         <tr ng-repeat="genre in gc.genreTableList">
             <td>{{genre.genre}}</td>
             <td>{{genre.count}}</td>
-            <td><button class="delete-button" ng-click="gc.deleteGenre(genre.id)">Delete</button></td>
+            <td>
+                <md-button class="md-raised md-primary" ng-click="gc.updateGenre($event, genre.id)">Update</md-button>
+                <md-button class="delete-button" ng-click="gc.deleteGenre(genre.id)">Delete</md-button></td>
         </tr>
     </tbody>
 </table>
