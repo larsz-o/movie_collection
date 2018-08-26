@@ -37,7 +37,6 @@ app.controller('MovieController', function ($http) {
                 alert('There was an error posting the movie.');
             })
         } else {
-            movieToEdit.id = movieToEdit.id; 
             movieToEdit.title = vm.movieTitle;
             movieToEdit.release_date = vm.movieDate;
             movieToEdit.run_time = vm.movieTime;
@@ -140,6 +139,7 @@ app.controller('MovieController', function ($http) {
         vm.movieTitle = movie.title;
         vm.movieTime = movie.run_time;
         vm.movieUrl = movie.image_url;
+        vm.movieDate = movie.release_date;
     }
     function getGenres() {
         $http({
