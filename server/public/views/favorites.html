@@ -8,7 +8,7 @@
         <tbody>
             <tr ng-repeat="movie in fc.movieCollection" ng-show="movie.favorite">
                 <td>{{movie.title}}</td>
-                <td><button ng-click="fc.unFavorite(movie)">Delete</button></td>
+                <td><button class="delete-button" ng-click="fc.unFavorite(movie)">Delete</button></td>
             </tr>
         </tbody>
     </table>

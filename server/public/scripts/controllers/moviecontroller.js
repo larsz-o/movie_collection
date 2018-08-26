@@ -3,7 +3,6 @@ app.controller('MovieController', function ($http) {
     let vm = this;
     vm.movieCollection = [];
     vm.genreTableList = [];
-    vm.toggleAction = false;
 
     vm.addMovie = function () {
         let movieToAdd = {
@@ -104,12 +103,13 @@ app.controller('MovieController', function ($http) {
         })
     } // end toggleFavorites 
     vm.updateMovie = function (id) {
-        vm.toggleAction = true;
+        let movieToEdit ={
 
+        }
         $http({
             method: 'PUT',
             url: '/movies/' + id,
-            data: movieToEdit
+            data: movieToUpdate
         }).then(function (response) {
             console.log('back from the server with', response);
             getMovies();
