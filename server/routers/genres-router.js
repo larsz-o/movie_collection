@@ -13,7 +13,7 @@ router.get('/', (req, res)=>{
         console.log('Error getting genres', error);
         res.sendStatus(500); 
     })
-})
+}) // end genres GET route 
 //POST route
 router.post('/', (req, res)=>{
     console.log('in genre POST route');
