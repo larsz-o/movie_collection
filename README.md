@@ -1,5 +1,5 @@
 # What Should We Watch?
-## Description: 
+## Description 
 A SEAN stack (SQL, Express, AngularJS, and Node) movie collection web app. 
 
 ## Built With
@@ -33,7 +33,7 @@ A SEAN stack (SQL, Express, AngularJS, and Node) movie collection web app.
 5. `npm install `
 
 ## Screenshots
-Dashboard View: 
+Dashboard View 
 ![Screen Shot of Dashboard View](https://github.com/larsz-o/movie_collection/blob/master/server/public/images/screenshot.png)
 
 ## Completed Features
