@@ -59,3 +59,6 @@ Dashboard View
 - [ ] Add information about where the movie can be accessed (in a personal DVD collection, on Netflix, etc.). 
 - [ ] Display each movie on its own page containing all reports about rankings and user lists. 
 - [ ] Allow users to upload their own pictures and connect an image search API to the image URL input field. 
+
+## Author
+Lars Mackenzie, @larsz-o
