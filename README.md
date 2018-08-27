@@ -38,7 +38,7 @@ Dashboard View
 
 ## Completed Features
 - [x] Users can add movies they'd like to watch to the collection.
-	- [x] Data collected includes: title, genre, run time, release date, and an image URL.
+	- [x] Data collected includes: title, genre, run time, release date, where the movie can be accessed, and an image URL.
 	- [x] Movies are displayed on cards below the 'Add a Movie' form. 
 - [x] Users can enter their own genres on the "Genres" view. 
 	- [x] New genres are made available within the "Dashboard" view when submitting a new movie. 
@@ -51,12 +51,11 @@ Dashboard View
 - [x] Movies can be edited or deleted.
 - [x] Genres can similarly be edited or deleted. 
 - [x] If a user would like to delete a genre, but there are movies in the collection with that genre, users will need to confirm this choice. All movies in this genre will be deleted if confirmed. 
-- [x] Movies can be searched by genre or title on the "Dashboard" view. They can also be filtered by any of their properties: run time, release date, ranking, or favorited status. 
+- [x] Movies can be searched by genre or title on the "Dashboard" view. They can also be filtered by any of their properties: run time, release date, ranking, movie location, or favorited status. 
 
 ## Next Steps
 - [ ] Create user accounts to allow multiple individuals to add, edit, favorite, and rank movies. 
 - [ ] Allow users to see each others' rankings to help decide what to watch as a couple or group. 
-- [ ] Add information about where the movie can be accessed (in a personal DVD collection, on Netflix, etc.). 
 - [ ] Display each movie on its own page containing all reports about rankings and user lists. 
 - [ ] Allow users to upload their own pictures and connect an image search API to the image URL input field. 
 
