@@ -36,6 +36,10 @@
         <md-content>
             <label>Run Time: </label>
             <input type="number" ng-model="mc.movieTime" placeholder="eg. 172">
+            </md-content>
+            <md-content>
+                <label>Where to Watch: </label>
+                <input type="text" ng-model="mc.movieLocation" placeholder="e.g. on Netflix">
             <label>Image: </label>
             <input type="text" ng-model="mc.movieUrl" placeholder="e.g. https://upload.wikimedia.org/wikipedia/en/thumb/a/a5/Twistermovieposter.jpg/220px-Twistermovieposter.jpg">
             <md-button ng-click="mc.addMovie()"class="md-raised md-primary">Submit</md-button>
@@ -52,8 +56,9 @@
         <img ng-src="{{movie.image_url}}" width="300px" height="300px" alt="movie poster">
         <div class="container">
             <h2>{{movie.title}}</h2>
-            <p>Release Date: {{movie.release_date | date: fullDate}}</p>
             <p>Genre: {{movie.genre}}</p>
+            <p>Release Date: {{movie.release_date | date: fullDate}}</p>
+            <p>Where to Watch: {{movie.location}}</p>
             <p>Ranking: {{movie.ranking}}</p>
             <img src="../images/baseline-thumb_up_alt-24px.svg" ng-click="mc.rankUp(movie)"><img src="../images/baseline-thumb_down_alt-24px.svg"
                 ng-click="mc.rankDown(movie)"><br/><br/>

@@ -17,6 +17,7 @@ app.controller('MovieController', function ($http) {
                 run_time: vm.movieTime,
                 image_url: vm.movieUrl,
                 genre_id: vm.movieGenre.id,
+                location: vm.movieLocation,
                 ranking: '0',
                 favorite: false
             }
@@ -32,6 +33,7 @@ app.controller('MovieController', function ($http) {
                 vm.movieDate = '';
                 vm.movieTime = '';
                 vm.movieUrl = '';
+                vm.movieLocation = '';
             }).catch(function (error) {
                 console.log('Error posting movie', error);
                 alert('There was an error posting the movie.');
@@ -42,6 +44,7 @@ app.controller('MovieController', function ($http) {
             movieToEdit.run_time = vm.movieTime;
             movieToEdit.image_url = vm.movieUrl;
             movieToEdit.genre_id = vm.movieGenre.id; 
+            movieToEdit.location = vm.movieLocation; 
             console.log(movieToEdit); 
             $http({
                 method: 'PUT',
@@ -55,6 +58,7 @@ app.controller('MovieController', function ($http) {
                 vm.movieDate = '';
                 vm.movieTime = '';
                 vm.movieUrl = '';
+                vm.movieLocation = '';
                 vm.toggleEdit = false; 
             }).catch(function (error) {
                 console.log('Error updating movie', error);
@@ -140,6 +144,7 @@ app.controller('MovieController', function ($http) {
         vm.movieTime = movie.run_time;
         vm.movieUrl = movie.image_url;
         vm.movieDate = movie.release_date;
+        vm.movieLocation = movie.location; 
     }
     function getGenres() {
         $http({
