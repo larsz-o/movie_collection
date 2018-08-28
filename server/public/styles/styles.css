@@ -37,13 +37,13 @@ select{
     padding: 16px 20px;
     border-radius: 4px; 
 }
-table{
+.table table{
     border-collapse: collapse;
     width: 80%;
     margin: 5%; 
     padding: 5px; 
 }
-td{
+.table td{
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
@@ -51,14 +51,14 @@ td{
 textarea{
     height: 10px; 
 }
-th{
+.table th{
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center; 
     border: 1px solid #ddd;
     padding: 8px;
 }
-tr:hover {
+.table tr:hover {
     background-color: #f5f5f5;
 }
 .bold{

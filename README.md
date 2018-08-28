@@ -22,7 +22,8 @@ A SEAN stack (SQL, Express, AngularJS, and Node) movie collection web app.
 	`"image_url" varchar(250) default '../images/vhs.png',`
     `"genre_id" int references "genres" not null,`
 	`"ranking" int, `
-	`"favorite" boolean`
+	`"favorite" boolean`,
+	`"location" varchar(50)`
 `);`
 
    `  CREATE TABLE "genres" (`

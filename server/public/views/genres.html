@@ -1,23 +1,25 @@
 <div id="form-div">
-    <form ng-submit="gc.addGenre()">
+    <form>
         <h2><label>Add a Genre</label></h2>
         <label>Genre: </label><input type="text" ng-model="gc.genreIn" placeholder="e.g. romantic dramedy">
-        <md-button class="md-raised md-primary">Submit</md-button>
+        <md-button class="md-primary md-raised" ng-click="gc.addGenre()">Submit</md-button>
     </form>
 </div>
-<table>
-    <thead>
-        <th>Genre</th>
-        <th>Total Movies</th>
-        <th>Actions</th>
-    </thead>
-    <tbody>
-        <tr ng-repeat="genre in gc.genreTableList">
-            <td>{{genre.genre}}</td>
-            <td>{{genre.count}}</td>
-            <td>
-                <md-button class="md-raised md-primary" ng-click="gc.updateGenre($event, genre.id)">Update</md-button>
-                <md-button class="delete-button" ng-click="gc.deleteGenre(genre.id)">Delete</md-button></td>
-        </tr>
-    </tbody>
-</table>
+<div class = "table">
+    <table>
+        <thead>
+            <th>Genre</th>
+            <th>Total Movies</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="genre in gc.genreTableList">
+                <td>{{genre.genre}}</td>
+                <td>{{genre.count}}</td>
+                <td>
+                    <md-button class="md-raised md-primary" ng-click="gc.updateGenre($event, genre.id)">Update</md-button>
+                    <md-button class="delete-button" ng-click="gc.deleteGenre(genre.id)">Delete</md-button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
